@@ -10,8 +10,7 @@ class Application
       #item_name = req.path.scan(/(?<=items\/)(.*)(?=\/.+)/).first
 
       if @@items.find {|item| item.name == item_name}
-        thh = @@items.find {|item| item.name == item_name}.price
-        resp.write thh
+        resp.write = @@items.find {|item| item.name == item_name}.price
       else
         resp.write "We do not have that item"
       end
