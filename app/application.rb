@@ -12,7 +12,8 @@ class Application
       if @@items.find {|item| item.name == item_name}
         resp.write = @@items.find {|item| item.name == item_name}.price
       else
-        resp.write "We do not have that item"
+        resp.write "Item not found"
+        resp.status 400
       end
     else
       resp.write "Route not found"
