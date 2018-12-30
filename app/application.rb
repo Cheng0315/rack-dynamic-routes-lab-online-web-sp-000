@@ -10,8 +10,8 @@ class Application
       #item_name = req.path.scan(/(?<=items\/)(.*)(?=\/.+)/).first
 
       if @@items.find {|item| item.name == item_name}
-        th = @@items.find {|item| item.name == item_name}.price
-        resp.write th
+        item_price = @@items.find {|item| item.name == item_name}.price
+        resp.write item_price
       else
         resp.write "Item not found"
         resp.status 400
