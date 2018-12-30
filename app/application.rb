@@ -11,7 +11,7 @@ class Application
       if @@items.find {|item| item.name == item_name}
         resp.write @@items.find {|item| item.name == item_name}.price
       else
-        resp.write "We do not have that item"
+        resp.write @@items.find {|item| item.name == item_name}.price
       end
     else
       resp.write "Route not found"
