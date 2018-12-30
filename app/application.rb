@@ -1,13 +1,20 @@
 class Application
-  @@item = []
+  @@items = []
+
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
     if req.path.match("/items/")
-      item = req.path.split.last
-    else
+      item_name = req.path.split.last
 
+      if @@items.find {|item| item.name == item_name}
+        resp.write @@items.find {|item| item.name == item_name}.price
+      else
+        resp.write "We do not have that item"
+      end
+    else
+      resp.write 404
     end
   end
 end
